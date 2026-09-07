@@ -1,0 +1,416 @@
+:root {
+    --color-bg: #fff7e8;
+    --color-bg-alt: #f6ead2;
+    --color-ink: #3a2415;
+    --color-brand: #562600;
+    --color-brand-hover: #3d1a00;
+    --color-brand-mid: #937551;
+    --color-accent: #cfab71;
+    --color-line: rgba(86, 38, 0, 0.16);
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --radius-sm: 4px;
+    --radius-md: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-bg);
+}
+
+.kaffee-berater {
+    max-width: 640px;
+    margin: 48px auto;
+    padding: 40px 28px;
+    font-family: var(--font-body);
+    color: var(--color-ink);
+}
+
+@media (max-width: 600px) {
+    .kaffee-berater {
+        margin: 0 auto;
+        min-height: 100vh;
+        padding: 32px 20px;
+    }
+}
+
+.berater-header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.berater-header h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-brand);
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px 0;
+}
+
+.berater-header p {
+    color: var(--color-brand-mid);
+    font-size: 15px;
+    margin: 0;
+}
+
+.frage-container {
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.frage-titel {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-brand);
+    margin-bottom: 22px;
+}
+
+.option {
+    background: transparent;
+    padding: 16px 18px;
+    margin: 10px 0;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-line);
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, padding-left 0.2s;
+}
+
+.option:hover {
+    border-color: var(--color-brand-mid);
+}
+
+.option strong {
+    font-weight: 600;
+    color: var(--color-ink);
+}
+
+.option small {
+    color: var(--color-brand-mid);
+}
+
+.option.selected {
+    background: var(--color-bg-alt);
+    border-color: var(--color-accent);
+    border-left: 3px solid var(--color-accent);
+    padding-left: 16px;
+}
+
+.option.selected strong {
+    color: var(--color-brand);
+}
+
+.buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: flex-start;
+    margin-top: 26px;
+}
+
+.btn {
+    padding: 13px 28px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-weiter {
+    background: var(--color-brand);
+    color: var(--color-bg);
+    border: 1px solid var(--color-brand);
+}
+
+.btn-weiter:hover:not(:disabled) {
+    background: var(--color-brand-hover);
+}
+
+.btn-zurueck {
+    background: transparent;
+    color: var(--color-brand-mid);
+    border: 1px solid var(--color-line);
+}
+
+.btn-zurueck:hover {
+    border-color: var(--color-brand-mid);
+    color: var(--color-brand);
+}
+
+.ergebnis {
+    text-align: left;
+}
+
+.ergebnis > .btn-zurueck {
+    display: block;
+    margin: 24px auto 0 auto;
+    width: fit-content;
+}
+
+.empfehlung-box {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: 32px 28px;
+    text-align: center;
+}
+
+.empfehlung-box h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-brand-mid);
+    margin: 0 0 4px 0;
+}
+
+.empfehlung-box .aromarad {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.aroma-tag {
+    background: transparent;
+    border: 1px solid var(--color-brand-mid);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--color-brand-mid);
+}
+
+.empfehlung-box .beschreibung {
+    color: var(--color-ink);
+    line-height: 1.65;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.produkt-link {
+    display: inline-block;
+    background: var(--color-brand);
+    color: var(--color-bg);
+    padding: 14px 34px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+
+.produkt-link:hover {
+    background: var(--color-brand-hover);
+}
+
+.progress-bar {
+    height: 2px;
+    background: var(--color-line);
+    margin-bottom: 40px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--color-accent);
+    transition: width 0.3s;
+    width: 0%;
+}
+
+.hidden {
+    display: none;
+}
+
+.alternative {
+    border-top: 1px solid var(--color-line);
+    padding-top: 16px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--color-brand-mid);
+    text-align: left;
+}
+
+.alternative strong {
+    color: var(--color-ink);
+}
+
+/* ===== Sortenübersicht (Vergleichstabelle) ===== */
+.sorten-tabelle {
+    max-width: 900px;
+    margin: 0 auto 56px auto;
+    padding: 0 28px;
+    font-family: var(--font-body);
+    color: var(--color-ink);
+}
+
+@media (max-width: 600px) {
+    .sorten-tabelle {
+        padding: 0 20px;
+    }
+}
+
+.tabelle-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.tabelle-header h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-brand);
+    font-size: 26px;
+    margin: 0 0 6px 0;
+}
+
+.tabelle-header p {
+    color: var(--color-brand-mid);
+    font-size: 14px;
+    margin: 0;
+}
+
+.tabelle-filter-leiste {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.tabelle-filter {
+    background: transparent;
+    color: var(--color-brand-mid);
+    border: 1px solid var(--color-line);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.tabelle-filter:hover {
+    border-color: var(--color-brand-mid);
+}
+
+.tabelle-filter.active {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: var(--color-bg);
+}
+
+.tabelle-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+}
+
+.sorten-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 620px;
+    font-size: 14px;
+}
+
+.sorten-table th,
+.sorten-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: middle;
+}
+
+.sorten-table thead th {
+    font-family: var(--font-body);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-brand-mid);
+    background: var(--color-bg-alt);
+    white-space: nowrap;
+}
+
+.sorten-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sorten-table tbody tr:hover {
+    background: var(--color-bg-alt);
+}
+
+.td-sorte strong {
+    color: var(--color-brand);
+    font-weight: 600;
+}
+
+.td-aromen {
+    color: var(--color-brand-mid);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.td-label {
+    display: inline-block;
+    margin-left: 8px;
+    color: var(--color-ink);
+    white-space: nowrap;
+}
+
+.dot-reihe {
+    display: inline-flex;
+    gap: 3px;
+    vertical-align: middle;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-line);
+    display: inline-block;
+}
+
+.dot-filled {
+    background: var(--color-accent);
+}
+
+.tabelle-link {
+    display: inline-block;
+    color: var(--color-brand);
+    border: 1px solid var(--color-brand);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+}
+
+.tabelle-link:hover {
+    background: var(--color-brand);
+    color: var(--color-bg);
+}
+
+.td-leer {
+    text-align: center;
+    color: var(--color-brand-mid);
+    padding: 24px 16px;
+}
