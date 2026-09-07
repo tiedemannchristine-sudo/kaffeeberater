@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>LeNoKo Kaffee-Berater</title>
+    <meta name="description" content="Finde in 3 Fragen deine perfekte LeNoKo-Kaffeesorte.">
+
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#562600">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="icon" href="./icons/icon-192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Kaffee-Berater">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="kaffee-berater" id="berater">
+    <div class="berater-header">
+        <h2>☕ Finde deinen perfekten Kaffee</h2>
+        <p>3 Fragen – deine persönliche Empfehlung</p>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <!-- Frage 1 -->
+    <div class="frage-container" id="frage1">
+        <div class="frage-titel">Wie trinkst du deinen Kaffee am liebsten?</div>
+        <div class="option" data-value="filter">
+            ☕ <strong>Filterkaffee / Handbrühmethoden</strong><br>
+            <small>V60, Chemex, Filterkaffeemaschine</small>
+        </div>
+        <div class="option" data-value="espresso">
+            ☕ <strong>Espresso / Vollautomaten</strong><br>
+            <small>Siebträger, Kaffeevollautomat, Espressokocher</small>
+        </div>
+        <div class="option" data-value="mild">
+            ☕ <strong>Café Crème / mit Milch</strong><br>
+            <small>Cappuccino, Latte Macchiato, Milchkaffee</small>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-weiter" onclick="naechsteFrage(1)" disabled id="btn1">Weiter</button>
+        </div>
+    </div>
+
+    <!-- Frage 2 -->
+    <div class="frage-container hidden" id="frage2">
+        <div class="frage-titel">Welche Geschmacksrichtung magst du?</div>
+        <div class="option" data-value="schokoladig">
+            🍫 <strong>Schokoladig & Nussig</strong><br>
+            <small>Vollmundig, weich, mit Kakao- und Nussnoten</small>
+        </div>
+        <div class="option" data-value="fruchtig">
+            🍒 <strong>Fruchtig & Lebendig</strong><br>
+            <small>Hell geröstet, mit Beerennoten und Zitrusfrische</small>
+        </div>
+        <div class="option" data-value="ausgeglichen">
+            ⚖️ <strong>Ausgeglichen & Harmonisch</strong><br>
+            <small>Balance zwischen Süße und Säure</small>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-zurueck" onclick="zurueck(2)">Zurück</button>
+            <button class="btn btn-weiter" onclick="naechsteFrage(2)" disabled id="btn2">Weiter</button>
+        </div>
+    </div>
+
+    <!-- Frage 3 -->
+    <div class="frage-container hidden" id="frage3">
+        <div class="frage-titel">Wie stark soll dein Kaffee sein?</div>
+        <div class="option" data-value="mild">
+            ☀️ <strong>Mild & Sanft</strong><br>
+            <small>Bekömmlich, wenig Bitterstoffe</small>
+        </div>
+        <div class="option" data-value="mittel">
+            🌤️ <strong>Mittelkräftig</strong><br>
+            <small>Ausgewogen, nicht zu stark</small>
+        </div>
+        <div class="option" data-value="kraeftig">
+            ⚡ <strong>Kräftig & Intensiv</strong><br>
+            <small>Vollmundig, markanter Körper</small>
+        </div>
+        <div class="option" data-value="koffeinfrei">
+            🌙 <strong>Entkoffeiniert</strong><br>
+            <small>Voller Geschmack, ohne Koffein</small>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-zurueck" onclick="zurueck(3)">Zurück</button>
+            <button class="btn btn-weiter" onclick="zeigErgebnis()" disabled id="btn3">Ergebnis anzeigen</button>
+        </div>
+    </div>
+
+    <!-- Ergebnis -->
+    <div class="ergebnis hidden" id="ergebnis">
+        <div class="empfehlung-box" id="empfehlungBox">
+            <!-- Wird dynamisch gefüllt -->
+        </div>
+        <button class="btn btn-zurueck" onclick="neuStart()">Nochmal von vorne</button>
+    </div>
+</div>
+
+<div class="sorten-tabelle" id="sortenTabelle">
+    <div class="tabelle-header">
+        <h2>Alle Sorten im Vergleich</h2>
+        <p>Geschmack, Intensität, Säure &amp; Zubereitung auf einen Blick</p>
+    </div>
+
+    <div class="tabelle-filter-leiste">
+        <button type="button" class="tabelle-filter active" data-gruppe="methode" data-wert="alle">Alle</button>
+        <button type="button" class="tabelle-filter" data-gruppe="methode" data-wert="filter">Für Filter</button>
+        <button type="button" class="tabelle-filter" data-gruppe="methode" data-wert="espresso">Für Espresso</button>
+        <button type="button" class="tabelle-filter" data-gruppe="staerke" data-wert="mild">Mild</button>
+        <button type="button" class="tabelle-filter" data-gruppe="staerke" data-wert="kraeftig">Kräftig</button>
+    </div>
+
+    <div class="tabelle-scroll">
+        <table class="sorten-table">
+            <thead>
+                <tr>
+                    <th>Sorte</th>
+                    <th>Intensität</th>
+                    <th>Säure</th>
+                    <th>Beste Zubereitung</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tabelleBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="./js/app.js"></script>
+</body>
+</html>
