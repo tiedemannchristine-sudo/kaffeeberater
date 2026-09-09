@@ -67,7 +67,7 @@ const produkte = {
     },
     'mayas-rheingold': {
         name: 'Espressoröstung Mayas Rheingold',
-        url: 'https://lenoko.de/products/espresso-honduras-trifft-indien',
+        url: 'https://lenoko.de/products/espresso-mayas-rheingold',
         aromen: ['Fruchtig', 'Schokolade', 'Karamell', 'Körperreich'],
         beschreibung: 'Arabica Catuai aus Honduras mit 10% Robusta aus Indien. Dunkle Röstung mit mittlerer Säure, fruchtigen und schokoladigen Noten. Viel Körper.',
         zubereitungsempfehlung: 'Espresso, Mokka, Ristretto',
